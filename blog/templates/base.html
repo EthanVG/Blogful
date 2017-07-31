@@ -36,6 +36,12 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        {% if current_user.is_authenticated == False %}
+                        <li><a href="{{ url_for('login_get') }}">Login</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('add_entry_get') }}">Add Entry</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout {{ current_user.name }}</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

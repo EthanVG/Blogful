@@ -1,7 +1,7 @@
 from flask import render_template
 from flask import request, redirect, url_for
 from flask import flash
-from flask_login import login_user, login_required, current_user
+from flask_login import login_user, login_required, current_user, logout_user
 from werkzeug.security import check_password_hash
 
 from . import app
@@ -107,4 +107,8 @@ def login_post():
         
     login_user(user)
     return redirect(request.args.get('next') or url_for("entries"))
-    
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("entries"))
