@@ -83,7 +83,7 @@ def edit_entry_post(ID):
     session.commit()
     return redirect(url_for('entries'))
 
-@app.route("/entry/<int:ID>/delete")
+@app.route("/entry/<int:ID>/delete", methods=["POST"])
 @login_required
 def delete_entry(ID):
     entry = session.query(Entry).get(ID)
